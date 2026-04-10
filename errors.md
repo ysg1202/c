@@ -1,6 +1,7 @@
 # Error
 ## 최대값 구하기 
 ```c
+// 오답
 int main() {
 	int a = 3, b = 2, c = 1;
 	int max = a;
@@ -17,7 +18,7 @@ int main() {
 
 	return 0;
 }
-------------------------
+// 오답
 int main() {
 	int a = 1, b = 2, c = 3;
 	int max;

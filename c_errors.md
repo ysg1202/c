@@ -75,7 +75,7 @@ gcc main.o led.o uart.o -o app // 링크
 - .s: 어셈블리 파일
 - .o: 오브젝트 파일
 - .elf: 임베디드용 실행/디버그용 파일
-- .hex: MCU 플래시에 올리기 좋은 텍스트 형식 바이너리
+- .hex: MCU 플래시에 올리기 좋은 텍스트 형식 바이너리 (데이터, 메모리 주소, 체크섬)
 - .bin: 순수 바이너리 파일
 - .exe: Windows 실행 파일
 ### PC 개발과 임베디드 개발의 차이
@@ -97,8 +97,20 @@ arm-none-eabi-gcc main.c -o main.elf // 임베디드 C개발
 ```
 make // 자동 빌드, 변경된 것만 다시 빌드, 대형 프로젝트에 적합
 ```
+## CLI (Command Line Interface)
+- 글자로 명령어를 입력해서 프로그램이나 시스템을 조작하는 방식
+- GUI는 마우스로 폴더, 버튼 등 선택 
+- ```
+  cd project
+  gcc main.c -o main
+  ./main
+  ```
+### 임베디드에서의 CLI
+1. PC의 명령어 창 (터미널에서 빌드, flash 다운로드, git 사용)
+2. 보드 안의 CLI 기능은 UART로 연결하여 사용 (led on, help, status)
+3. 장치 내부에 만든 명령어 인터페이스, 즉 MCU 프로그램 안에 간단한 셸을 만든 
 
-
+  makefile, cmake 차이, 터미널, 쉘 차이, cl
 
 
 

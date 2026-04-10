@@ -34,6 +34,7 @@ int sec = 123 - 60 * min;
 - 여러 조건이 모두 의미 있을 때 적합
 - 최댓값 갱신, 여러 조건 체크, 옵션 여러 개 동시 적용
 ## 컴파일
+- C 컴파일은 전처리, 컴파일, 어셈블, 링크 단계로 이루어지며, GCC/Clang/MSVC 같은 컴파일러를 사용해 실행 파일 또는 임베디드용 바이너리를 생성
 ```
 gcc main.c -o main // 실행 파일
 gcc -E main.c -o main.i // 전처리만
@@ -58,6 +59,38 @@ gcc main.o led.o uart.o -o app // 링크
 - ```
   cl main.c
   ```
+### 임베디드용 크로스 컴파일러
+- 크로스 컴파일: PC에서 AVR, STM32용 바이너리 생성 
+- AVR: avr-gcc
+- ARM Cortex-M: arm-none-eabi-gcc
+- ```
+  arm-none-eabi-gcc main.c -o main.elf // STM32 
+  ```
+### 디버그 빌드/ 릴리즈 빌드
+- ```
+  gcc -g main.c -o main // 디버그 빌드 (디버그 정보 포함, GDB 같은 디버거 사용 가능)
+  ```
+### 결과 파일 종류
+- .i: 전처리 결과 파일
+- .s: 어셈블리 파일
+- .o: 오브젝트 파일
+- .elf: 임베디드용 실행/디버그용 파일
+- .hex: MCU 플래시에 올리기 좋은 텍스트 형식 바이너리
+- .bin: 순수 바이너리 파일
+- .exe: Windows 실행 파일
+### PC 개발과 임베디드 개발의 차이
+```
+./main // PC 실행파일
+```
+```
+arm-none-eabi-gcc main.c -o main.elf // 임베디드 C개발
+```
+- .elf 생성
+- 필요하면 .bin, .hex 변환
+- 보드에 다운로드
+- 디버거(ST-LINK, J-LINK 등)로 실행
+-임베디드는 컴파일 후 바로 PC에서 실행하는 게 아니라 보드에 올림
+
 ## Makefile 
 - 파일이 많아지면 명령어를 매번 치기 어려움
 ### 실행

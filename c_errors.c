@@ -1,19 +1,6 @@
-#include <stdio.h>
-
-int main() {
-	int a = 1, b = 2, c = 3;
-	int max;
-
-	if (a > b)
-		max = a;
-
-	else if (b > c)
-		max = b;
-
-	else if (a > c)
-		max = a;
-
-	printf("max: %d", max);
-
-	return 0;
-}
+# 기억 사항
+## 1
+// 작은수 % 큰수 = 작은수
+1 % 10 = 1
+5 % 10 = 5
+8 % 10 = 8

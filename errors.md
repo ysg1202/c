@@ -1,5 +1,5 @@
 #제목
-```
+```c
 #include <stdio.h>
 
 int main() {

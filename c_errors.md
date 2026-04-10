@@ -47,12 +47,24 @@ gcc -c led.c -o led.o
 gcc -c uart.c -o uart.o
 gcc main.o led.o uart.o -o app // 링크
 ```
-### Makefile 사용
+## 컴파일러 종류
+### GCC
+- Linux에서 많이 사용
+- Windows에서도 MinGW, MSYS2로 사용 가능
+- 임베디드용 크로스 컴파일러도 많음
+### MSVC
+- 마소의 C/C++ 컴파일러
+- Visual Studio에서 주로 사용
+- ```
+  cl main.c
+  ```
+## Makefile 
 - 파일이 많아지면 명령어를 매번 치기 어려움
-#### 실행
+### 실행
 ```
 make // 자동 빌드, 변경된 것만 다시 빌드, 대형 프로젝트에 적합
 ```
+
 
 
 

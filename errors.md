@@ -1,22 +1,21 @@
 # Error
 ## 최대값 구하기 
 ```c
-#include <stdio.h>
-
 int main() {
-    int a = 1, b = 2, c = 3;
-    int max;
+	int a = 3, b = 2, c = 1;
+	int max = a;
 
-    if (a >= b && a >= c)
-        max = a;
-    else if (b >= a && b >= c)
-        max = b;
-    else
-        max = c;
+	if (b > a)
+		max = b;
 
-    printf("max: %d\n", max);
+	if (b > c)
+		max = b;
 
-    return 0;
+	if (c > a)
+		max = c;
+	printf("max: %d", max);
+
+	return 0;
 }
 ------------------------
 int main() {

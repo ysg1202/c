@@ -4,21 +4,19 @@
 #include <stdio.h>
 
 int main() {
-	int a = 1, b = 2, c = 3;
-	int max;
+    int a = 1, b = 2, c = 3;
+    int max;
 
-	if (a > b)
-		max = a;
+    if (a >= b && a >= c)
+        max = a;
+    else if (b >= a && b >= c)
+        max = b;
+    else
+        max = c;
 
-	else if (b > c)
-		max = b;
+    printf("max: %d\n", max);
 
-	else if (a > c)
-		max = a;
-
-	printf("max: %d", max);
-
-	return 0;
+    return 0;
 }
 ------------------------
 int main() {

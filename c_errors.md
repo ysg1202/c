@@ -34,7 +34,44 @@ int sec = 123 - 60 * min;
 - 여러 조건이 모두 의미 있을 때 적합
 - 최댓값 갱신, 여러 조건 체크, 옵션 여러 개 동시 적용
 ## 컴파일
-gcc main.c -o main
+```
+gcc main.c -o main // 실행 파일
+gcc -E main.c -o main.i // 전처리만
+gcc -S main.c -o main.s // 컴파일만 (C -> Assembly)
+gcc -c main.c -o main.o // 어셈블만
+gcc main.o -o main      // 링크 (오브젝트 파일을 실행 파일로 연결)
+
+// 각각 컴파일
+gcc -c main.c -o main.o
+gcc -c led.c -o led.o
+gcc -c uart.c -o uart.o
+gcc main.o led.o uart.o -o app // 링크
+```
+### Makefile 사용
+- 파일이 많아지면 명령어를 매번 치기 어려움
+#### 실행
+```
+make // 자동 빌드, 변경된 것만 다시 빌드, 대형 프로젝트에 적합
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

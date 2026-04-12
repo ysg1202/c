@@ -70,7 +70,25 @@ void my_printf(void *format, char *input) {
 - <img width="682" height="795" alt="image" src="https://github.com/user-attachments/assets/b6a0b70e-702e-4141-afe1-c4bd2df8b407" />
 - ```c
   putchar(*s++);
-
   putchar(*s);
   s++;
+  ```
+## A~E for문
+```c
+int main(void)
+{
+    char i = 'A';
+    char j = 'A';
+
+    for (i = 'A'; i <= 'E'; i++) {
+        for (j = 'A'; j <= i; j++) {
+            printf("%c", j);
+        }
+        printf("\n");
+    }
+        
+
+    return 0;
+}
 ```
+## 

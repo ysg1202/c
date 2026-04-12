@@ -91,4 +91,56 @@ int main(void)
     return 0;
 }
 ```
-## 
+## 배열에서 max 값 찾기
+```c
+int main(void)
+{
+    int array[5] = { 3, 8, 2, 10, 4 };
+    int max = array[0]; // 초기화를 해야 비교 기준이 생김 
+    
+
+    for (int i = 1; i < 5; i++) {
+        //max = array[i]; // 비교 없이 계속 덮어쓰기만 해서 마지막 원소가 max가 됨
+
+        if (array[i] > max)
+            max = array[i];
+    }
+    printf("max: %d", max);
+
+    return 0;
+}
+```
+## 배열 거꾸로 출력
+```c
+ int array[5] = { 1,2,3,4,5 };
+
+ for (int i = 4; i < 5; i--) {
+     printf("%d ", array[i]);
+     if (i == 0)
+         break;
+ }
+```
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int array[5] = { 1, 2, 3, 4, 5 };
+
+    for (int i = 4; i >= 0; i--) {
+        printf("%d ", array[i]);
+    }
+
+    return 0;
+}
+```
+## 문자열 입력 받아 출력
+```c
+//char buffer[] = { 0 };  // 배열 크기가 1인 문자 배열 (x)
+char buffer[100] = { 0 }; // 바이트 저장, 마지막은 '\0'
+
+printf("문자열 입력: ");
+fgets(buffer, sizeof(buffer), stdin);
+
+printf("입력한 문자열: %s", buffer);
+```

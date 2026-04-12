@@ -52,3 +52,18 @@ int main() {
 	return 0;
 }
 ```
+## 가변인자 출력 함수
+```c
+void my_printf(void *format, char *input) {
+	// void *는 정체를 모르는 주소 바로 *format으로 사용 불가
+	// *format 하려면 컴파일러가 알아야 하는 게 있어
+	// 1바이트씩 읽을지
+	// 4바이트씩 읽을지
+	// 문자로 볼지
+	// 정수로 볼지
+	// 그런데 void *는 타입 정보가 없음.
+	if (*format == '%') {
+
+	}
+```
+

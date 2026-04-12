@@ -55,7 +55,7 @@ int main() {
 ## 가변인자 출력 함수
 ```c
 void my_printf(void *format, char *input) {
-	// void *는 정체를 모르는 주소 바로 *format으로 사용 불가
+	// void *는 정체를 모르는 주소, 바로 *format으로 사용 불가
 	// *format 하려면 컴파일러가 알아야 하는 게 있어
 	// 1바이트씩 읽을지
 	// 4바이트씩 읽을지
@@ -66,4 +66,33 @@ void my_printf(void *format, char *input) {
 
 	}
 ```
+## Day 28
+<img width="682" height="795" alt="image" src="https://github.com/user-attachments/assets/b6a0b70e-702e-4141-afe1-c4bd2df8b407" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

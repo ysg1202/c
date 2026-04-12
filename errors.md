@@ -67,12 +67,12 @@ void my_printf(void *format, char *input) {
 	}
 ```
 ## Day 28
-<img width="682" height="795" alt="image" src="https://github.com/user-attachments/assets/b6a0b70e-702e-4141-afe1-c4bd2df8b407" />
-```c
-putchar(*s++);
+- <img width="682" height="795" alt="image" src="https://github.com/user-attachments/assets/b6a0b70e-702e-4141-afe1-c4bd2df8b407" />
+- ```c
+  putchar(*s++);
 
-putchar(*s);
-s++;
+  putchar(*s);
+  s++;
 ```
 
 

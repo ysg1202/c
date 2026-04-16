@@ -144,3 +144,32 @@ fgets(buffer, sizeof(buffer), stdin);
 
 printf("입력한 문자열: %s", buffer);
 ```
+## 온도 출력
+```c
+static uint32_t temp_read_period = 0;
+void cliTemp(uint8_t argc, char** argv)
+{
+    if (argc == 1)
+    {
+        float t = tempRead();
+        cliPrintf("temp: %.2f\r\n", t);
+    }
+    else if (argc == 2)
+    {
+        if (strcmp(argv[1], "stop") == 0){
+            temp_read_period = 0;
+            cliPrintf("Temperature Auto Read Stopped!\r\n");
+            return NULL;
+        }
+																
+        temp_read_period = atoi(argv[1]); // else추가 안할 시 stop되고 옆의 두 줄 코드 실행
+        cliPrintf("Temperature Auto Read Start!\r\n");
+        
+    }
+    else
+    {
+        cliPrintf("Usage: temp\r\n");
+        cliPrintf("       temp read\r\n");
+        cliPrintf("       temp stop\r\n");
+    }
+}

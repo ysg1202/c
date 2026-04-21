@@ -255,17 +255,30 @@ void action_idle_to_run(void) {
 ```
 ### 14-2. 함수 포인터 변수 만들기
 ```c
-void (*ActionFunc)(void); // ActionFunc: 포인터 변
-``` 
+void (*ActionFunc)(void); // ActionFunc: 포인터 변수
+```
+```c
+void hello(void) {
+    printf("hello\n");
+}
+
+void (*fp)(void);
+fp = hello; // fp가 hello()함수 주소 저장
+fp(); // hello();와 같은 의미 
+```
 ### 14-3. 함수 포인터 타입 이름 만들기
 ```c
-typedef void (*ActionFunc)(void);
+typedef void (*ActionFunc)(void); // void 반환, "매개변수 없는 함수 포인터 타입"을 만든다 
 =================================
 ActionFunc fp;
 fp = action_idle_to_run;
 fp();
 ```
-
+```c
+// 아래 두 경우는 같다
+ActionFunc fp;
+void (*fp)(void);
+```
 ## 14.API, dma, hardwarefault, Day17
 
 

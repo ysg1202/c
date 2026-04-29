@@ -211,3 +211,8 @@ if (!thermalReadRegister(addr, &data))
 frame_buf[i] = data;
 addr++;
 ```
+## 배열 사용시 주의점
+```c
+    uint16_t frame_buf[16];
+    if (thermalReadFrame(&frame_buf) == true) // 매개 변수가 포인터를 받을 때 배열은 &빼고 삽입 
+```

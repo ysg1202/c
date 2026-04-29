@@ -173,3 +173,41 @@ void cliTemp(uint8_t argc, char** argv)
         cliPrintf("       temp stop\r\n");
     }
 }
+```
+## 가드문 활용
+```c
+// 가드문x
+bool thermalReadFrame(uint16_t *frame_buf)
+{
+    uint16_t i;
+    uint16_t data;
+    uint16_t addr = MLX90640_RAM_START_ADDR; // 수정 필요?
+
+    for (i=0; i<16; i++)
+    {
+        if (thermalReadRegister(addr, &data) == true)
+        {
+            addr++;
+            frame_buf[i] = data; 
+        }
+    }
+    return true;
+}
+```
+```c
+if (thermalReadRegister(addr, &data) == false)
+{
+    return false;
+}
+
+frame_buf[i] = data;
+addr++;
+================
+if (!thermalReadRegister(addr, &data))
+{
+    return false;
+}
+
+frame_buf[i] = data;
+addr++;
+```

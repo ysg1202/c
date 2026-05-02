@@ -216,3 +216,23 @@ addr++;
     uint16_t frame_buf[16];
     if (thermalReadFrame(&frame_buf) == true) // 매개 변수가 포인터를 받을 때 배열은 &빼고 삽입 
 ```
+## 코드 단축
+```c
+uint8_t thermalGetSubpage(uint16_t status)
+{
+    if ((status & MLX90640_SUBPAGE_BIT) == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    } 
+}
+```
+```c
+uint8_t thermalGetSubpage(uint16_t status)
+{
+    return (uint8_t)(status & MLX90640_SUBPAGE_BIT);
+}
+```

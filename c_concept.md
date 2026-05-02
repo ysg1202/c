@@ -279,6 +279,92 @@ fp();
 ActionFunc fp;
 void (*fp)(void);
 ```
+
+## 15. MX에서 Heap/Stack
+- 1. C 런타임용 Heap / Stack
+- 2. FreeRTOS Task Stack / FreeRTOS Heap
+### 15-1. MX의 기본 Stack Size
+- Minimum Stack Size: main stack, 즉 MSP(Main Stack Pointer) 쪽 스택 크기
+- RTOS 시작 전에는 main()이 이 스택을 사용
+- RTOS가 시작된 뒤에는 각 task가 자기 stack을 따로 가
+```
+Reset_Handler
+↓
+main()
+↓
+HAL_Init()
+↓
+MX_GPIO_Init()
+↓
+MX_I2C_Init()
+↓
+MX_FREERTOS_Init()
+↓
+osKernelStart()
+```
+### 15-2. MX의 기본 Heap Size
+- Minimum Heap Size: C 라이브러리의 malloc() 같은 동적 할당용 heap
+- RTOS를 쓰는 경우에는 보통 일반 malloc()보다 FreeRTOS heap을 많이 봐야 함
+```c
+malloc(100);
+free(ptr);
+```
+### 15-3. RTOS Task Size
+- task마다 stack 존재
+```c
+const osThreadAttr_t defaultTask_attributes = {
+  .name = "defaultTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
+```
+- 위 Default Task 안에서 코드 아래 코드 실행
+```c
+void StartDefaultTask(void *argument)
+{
+    MX_LWIP_Init();
+    apInit();
+
+    while (1) {
+        apMain();
+    }
+}
+```
+- 그러면 apInit(), thermalPrintRawFrame(), thermalReadFrame()에서 쓰는 지역변수들은 DefaultTask stack을 사용
+```c
+// 이 배열은 지역 변수: 1536bytes
+// 이 함수가 실행될 때 task stack을 1536 bytes 사용
+// DefaultTask stack이 512 bytes라면 바로 위험, HardFault나 이상한 리셋이 날 수 있음
+// 이런 큰 배열은 보통 static 또는 전역으로 빼는 게 좋음
+// 이렇게 하면 stack이 아니라 RAM의 BSS 영역에 잡힘 
+void thermalPrintRawFrame(void)
+{
+    uint16_t frame_buf[768];
+}
+```
+| 구분                 | 어디서 설정                  | 주로 쓰는 곳                   | 네 프로젝트 영향         |
+| ------------------ | ----------------------- | ------------------------- | ----------------- |
+| Minimum Stack Size | CubeMX Project Manager  | RTOS 시작 전 main stack      | 초기화 코드에서 사용       |
+| Minimum Heap Size  | CubeMX Project Manager  | C `malloc()`              | malloc 안 쓰면 영향 작음 |
+| Task Stack Size    | CubeMX FreeRTOS Task 설정 | 각 task 지역변수, 함수 호출        | 매우 중요             |
+| FreeRTOS Heap Size | FreeRTOSConfig / CubeMX | task, queue, semaphore 생성 | task 많이 만들면 중요    |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 14.API, dma, hardwarefault, Day17
 
 

@@ -236,3 +236,5 @@ uint8_t thermalGetSubpage(uint16_t status)
     return (uint8_t)(status & MLX90640_SUBPAGE_BIT);
 }
 ```
+<img width="658" height="407" alt="image" src="https://github.com/user-attachments/assets/72798822-91d4-4b11-be19-00976a8ff7c4" />
+

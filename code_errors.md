@@ -238,3 +238,13 @@ uint8_t thermalGetSubpage(uint16_t status)
 ```
 <img width="658" height="407" alt="image" src="https://github.com/user-attachments/assets/72798822-91d4-4b11-be19-00976a8ff7c4" />
 
+## 배열 인자 바로 입력 받기
+```c
+for (i = 0; i < 5; i++)
+{
+    printf("%d번째 정수 입력: ", i + 1);
+    scanf("%d", &arry[i]);
+}
+```
+
+
